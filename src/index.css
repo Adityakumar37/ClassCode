@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CodeNotes Hub - Premium Dark Theme Design System */
+@layer base {
+  :root {
+    /* Elegant dark theme with emerald/mint accents */
+    --background: 220 20% 7%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Emerald green accent */
+    --primary: 160 60% 45%;
+    --primary-foreground: 220 20% 7%;
+
+    /* Soft teal secondary */
+    --secondary: 175 40% 35%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 160 50% 40%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 160 60% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens - refined, no neon */
+    --glass-bg: rgba(18, 22, 28, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    
+    /* Code block colors (refined) */
+    --code-bg: 220 20% 6%;
+    --code-keyword: 200 70% 55%;
+    --code-string: 160 50% 50%;
+    --code-comment: 215 10% 45%;
+    --code-function: 45 70% 60%;
+    --code-variable: 175 45% 55%;
+    
+    /* Gradient definitions - subtle, sophisticated */
+    --gradient-primary: linear-gradient(135deg, hsl(160 60% 45%), hsl(175 40% 35%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 10%), hsl(220 20% 7%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    
+    /* Sidebar */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 160 60% 45%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 13%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 160 60% 45%;
+  }
+
+  .dark {
+    /* Same as root - this is a dark theme only app */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Glassmorphism card - refined */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Clean code blocks */
+  .code-block {
+    background: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .code-block .keyword {
+    color: hsl(var(--code-keyword));
+  }
+
+  .code-block .string {
+    color: hsl(var(--code-string));
+  }
+
+  .code-block .comment {
+    color: hsl(var(--code-comment));
+    font-style: italic;
+  }
+
+  .code-block .function {
+    color: hsl(var(--code-function));
+  }
+
+  .code-block .variable {
+    color: hsl(var(--code-variable));
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    position: relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .animated-underline:hover::after,
+  .animated-underline.active::after {
+    transform: scaleX(1);
+  }
+
+  /* Progress bar style */
+  .progress-bar {
+    background: hsl(var(--muted));
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    background: var(--gradient-primary);
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+  }
+
+  /* Topic card hover effect */
+  .topic-card {
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+  }
+
+  .topic-card:hover {
+    border-color: hsl(var(--primary) / 0.25);
+    background: hsl(var(--primary) / 0.05);
+  }
+
+  .topic-card.active {
+    border-color: hsl(var(--primary) / 0.5);
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  /* Highlight card for definitions */
+  .highlight-card {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    border-left: 3px solid hsl(var(--primary));
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Coming soon badge */
+  .coming-soon-badge {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(260 60% 35%));
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
