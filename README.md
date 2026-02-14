@@ -10,7 +10,7 @@ Instead of scattered PDFs and messy notebooks, the platform presents topics like
 
 ## ✨ What You Get
 
-- VS Code inspired dark interface  
+  
 - Clean sidebar-based navigation  
 - Lab and topic oriented learning  
 - Beginner-friendly explanations  
@@ -18,7 +18,7 @@ Instead of scattered PDFs and messy notebooks, the platform presents topics like
 - Interview insight highlights  
 - Responsive, distraction-free reading  
 
----
+
 
 ## 📚 Subjects
 
@@ -30,7 +30,7 @@ Currently supported:
 
 The system is built to expand easily as new material becomes available.
 
----
+
 
 ## 🛠️ Built With
 
