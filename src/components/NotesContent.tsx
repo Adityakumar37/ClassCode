@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, ChevronLeft, ChevronRight, Lightbulb, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CodeBlock from "./CodeBlock";
-import { NoteTopic, getAllTopics } from "@/data/javascriptNotes";
+import { NoteTopic } from "@/data/javascriptNotes";
 
 interface NotesContentProps {
   topic: NoteTopic | null;
@@ -68,11 +68,10 @@ const NotesContent = ({
           <Button
             onClick={onMarkComplete}
             variant={isCompleted ? "default" : "outline"}
-            className={`shrink-0 ${
-              isCompleted
+            className={`shrink-0 ${isCompleted
                 ? "bg-green-600 hover:bg-green-700 text-white"
                 : "border-green-600/50 text-green-500 hover:bg-green-600/10"
-            }`}
+              }`}
           >
             <CheckCircle2 className="w-4 h-4 mr-2" />
             {isCompleted ? "Completed" : "Mark Complete"}

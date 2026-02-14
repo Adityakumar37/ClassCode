@@ -21,8 +21,8 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
 
   const navItems = [
     { id: "home", label: "Home", available: true },
-    { id: "html", label: "HTML", available: false },
-    { id: "css", label: "CSS", available: false },
+    { id: "html", label: "HTML", available: true },
+    { id: "css", label: "CSS", available: true },
     { id: "javascript", label: "JavaScript", available: true },
   ] as const;
 
@@ -31,9 +31,8 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-card py-3" : "py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-card py-3" : "py-5"
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
@@ -61,13 +60,12 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
             <motion.button
               key={item.id}
               onClick={() => item.available && onNavigate(item.id)}
-              className={`relative px-4 py-2 rounded-lg font-medium transition-colors ${
-                !item.available
+              className={`relative px-4 py-2 rounded-lg font-medium transition-colors ${!item.available
                   ? "text-muted-foreground cursor-not-allowed"
                   : activeSection === item.id
-                  ? "text-primary"
-                  : "text-foreground/70 hover:text-foreground"
-              }`}
+                    ? "text-primary"
+                    : "text-foreground/70 hover:text-foreground"
+                }`}
               whileHover={item.available ? { scale: 1.05 } : undefined}
               whileTap={item.available ? { scale: 0.95 } : undefined}
             >
@@ -123,13 +121,12 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                     setIsMobileMenuOpen(false);
                   }
                 }}
-                className={`w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-colors ${
-                  !item.available
+                className={`w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-colors ${!item.available
                     ? "text-muted-foreground"
                     : activeSection === item.id
-                    ? "bg-primary/10 text-primary"
-                    : "hover:bg-muted"
-                }`}
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-muted"
+                  }`}
               >
                 <span>{item.label}</span>
                 {!item.available && (

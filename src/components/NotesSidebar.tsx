@@ -1,17 +1,23 @@
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronRight, BookOpen, Search } from "lucide-react";
 import { useState } from "react";
-import { javascriptNotes, NoteSection } from "@/data/javascriptNotes";
+import { NoteSection } from "@/data/javascriptNotes";
 
 interface NotesSidebarProps {
+  notes: NoteSection[];
   selectedTopicId: string | null;
   onSelectTopic: (topicId: string) => void;
   completedTopics: string[];
 }
 
-const NotesSidebar = ({ selectedTopicId, onSelectTopic, completedTopics }: NotesSidebarProps) => {
+const NotesSidebar = ({
+  notes,
+  selectedTopicId,
+  onSelectTopic,
+  completedTopics
+}: NotesSidebarProps) => {
   const [expandedSections, setExpandedSections] = useState<string[]>(
-    javascriptNotes.map((s) => s.id)
+    notes.map((s) => s.id)
   );
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -24,13 +30,15 @@ const NotesSidebar = ({ selectedTopicId, onSelectTopic, completedTopics }: Notes
   };
 
   const filteredNotes = searchQuery
-    ? javascriptNotes.map((section) => ({
-        ...section,
-        topics: section.topics.filter((topic) =>
-          topic.title.toLowerCase().includes(searchQuery.toLowerCase())
-        ),
-      })).filter((section) => section.topics.length > 0)
-    : javascriptNotes;
+    ? notes.map((section) => ({
+      ...section,
+      topics: section.topics.filter((topic) =>
+        topic.title.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    })).filter((section) => section.topics.length > 0)
+    : notes;
+
+  const totalTopicsCount = notes.reduce((acc, s) => acc + s.topics.length, 0);
 
   return (
     <aside className="w-72 shrink-0 h-[calc(100vh-80px)] sticky top-20 overflow-hidden flex flex-col glass-card rounded-xl">
@@ -84,25 +92,22 @@ const NotesSidebar = ({ selectedTopicId, onSelectTopic, completedTopics }: Notes
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.03 }}
                       onClick={() => onSelectTopic(topic.id)}
-                      className={`topic-card w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-left transition-all ${
-                        isSelected
+                      className={`topic-card w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-left transition-all ${isSelected
                           ? "active"
                           : "hover:bg-muted/30"
-                      }`}
+                        }`}
                     >
                       <div
-                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                          isCompleted
+                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${isCompleted
                             ? "bg-green-500"
                             : isSelected
-                            ? "bg-primary"
-                            : "bg-muted-foreground/30"
-                        }`}
+                              ? "bg-primary"
+                              : "bg-muted-foreground/30"
+                          }`}
                       />
                       <span
-                        className={`truncate ${
-                          isSelected ? "text-primary font-medium" : "text-muted-foreground"
-                        }`}
+                        className={`truncate ${isSelected ? "text-primary font-medium" : "text-muted-foreground"
+                          }`}
                       >
                         {topic.title}
                       </span>
@@ -120,7 +125,7 @@ const NotesSidebar = ({ selectedTopicId, onSelectTopic, completedTopics }: Notes
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <BookOpen className="w-4 h-4" />
           <span>
-            {completedTopics.length} / {javascriptNotes.reduce((acc, s) => acc + s.topics.length, 0)} completed
+            {completedTopics.filter(id => notes.some(s => s.topics.some(t => t.id === id))).length} / {totalTopicsCount} completed
           </span>
         </div>
       </div>
@@ -129,3 +134,4 @@ const NotesSidebar = ({ selectedTopicId, onSelectTopic, completedTopics }: Notes
 };
 
 export default NotesSidebar;
+

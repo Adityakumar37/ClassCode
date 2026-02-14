@@ -8,10 +8,10 @@ interface FooterProps {
 
 const Footer = ({ onContinueLearning }: FooterProps) => {
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Github, href: "https://github.com/Adityakumar37/ClassCode", label: "GitHub" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "#", label: "Email" },
+    { icon: Mail, href: "mailto:hello@codenotes.hub", label: "Email" },
   ];
 
   return (
@@ -49,7 +49,7 @@ const Footer = ({ onContinueLearning }: FooterProps) => {
               size="lg"
               className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)]"
             >
-              Continue with JavaScript Notes
+              Continue Learning
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>

@@ -2,7 +2,8 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import JavaScriptNotes from "@/components/JavaScriptNotes";
-import ComingSoonSection from "@/components/ComingSoonSection";
+import HtmlNotes from "@/components/HtmlNotes";
+import CssNotes from "@/components/CssNotes";
 import Footer from "@/components/Footer";
 
 type ActiveSection = "home" | "html" | "css" | "javascript";
@@ -21,7 +22,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
       <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
 
       {activeSection === "home" && (
@@ -34,15 +35,26 @@ const Index = () => {
       {activeSection === "javascript" && (
         <>
           <JavaScriptNotes />
-          <Footer onContinueLearning={() => {}} />
+          <Footer onContinueLearning={() => { }} />
         </>
       )}
 
-      {activeSection === "html" && <ComingSoonSection technology="html" />}
+      {activeSection === "html" && (
+        <>
+          <HtmlNotes />
+          <Footer onContinueLearning={() => handleNavigate("css")} />
+        </>
+      )}
 
-      {activeSection === "css" && <ComingSoonSection technology="css" />}
+      {activeSection === "css" && (
+        <>
+          <CssNotes />
+          <Footer onContinueLearning={() => handleNavigate("javascript")} />
+        </>
+      )}
     </div>
   );
 };
 
 export default Index;
+

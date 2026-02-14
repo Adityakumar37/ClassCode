@@ -4,15 +4,15 @@ import { Menu } from "lucide-react";
 import NotesSidebar from "./NotesSidebar";
 import NotesContent from "./NotesContent";
 import ProgressTracker from "./ProgressTracker";
-import { getTopicById, getAllTopics } from "@/data/javascriptNotes";
+import { javascriptNotes, getTopicById, getAllTopics } from "@/data/javascriptNotes";
 
 const JavaScriptNotes = () => {
-  const [selectedTopicId, setSelectedTopicId] = useState<string | null>("hoisting-basic");
+  const [selectedTopicId, setSelectedTopicId] = useState<string | null>("hoisting");
   const [completedTopics, setCompletedTopics] = useState<string[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const allTopics = getAllTopics();
-  const currentTopic = selectedTopicId ? getTopicById(selectedTopicId) : null;
+  const allTopics = getAllTopics(javascriptNotes);
+  const currentTopic = selectedTopicId ? getTopicById(selectedTopicId, javascriptNotes) : null;
   const currentIndex = allTopics.findIndex((t) => t.topic.id === selectedTopicId);
 
   // Load completed topics from localStorage
@@ -87,7 +87,7 @@ const JavaScriptNotes = () => {
           className="mb-6"
         >
           <ProgressTracker
-            completedCount={completedTopics.length}
+            completedCount={completedTopics.filter(id => allTopics.some(t => t.topic.id === id)).length}
             totalCount={allTopics.length}
           />
         </motion.div>
@@ -117,6 +117,7 @@ const JavaScriptNotes = () => {
             `}
           >
             <NotesSidebar
+              notes={javascriptNotes}
               selectedTopicId={selectedTopicId}
               onSelectTopic={handleSelectTopic}
               completedTopics={completedTopics}
@@ -146,3 +147,4 @@ const JavaScriptNotes = () => {
 };
 
 export default JavaScriptNotes;
+

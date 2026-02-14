@@ -13,7 +13,7 @@ const HeroSection = ({ onExploreNotes }: HeroSectionProps) => {
       <div className="absolute inset-0 bg-grid-pattern bg-[size:50px_50px] opacity-[0.02]" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] animate-float animation-delay-200" />
-      
+
       {/* Floating Code Elements */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -65,8 +65,8 @@ const HeroSection = ({ onExploreNotes }: HeroSectionProps) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            Study JavaScript concepts with structured class notes extracted directly 
-            from your PDFs. Clean, modern, and developer-friendly.
+            Study HTML, CSS, and JavaScript concepts with structured notes extracted directly
+            from class resources. Clean, modern, and developer-friendly.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -82,11 +82,11 @@ const HeroSection = ({ onExploreNotes }: HeroSectionProps) => {
               className="group relative overflow-hidden bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)]"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Explore JavaScript Notes
+                Explore All Notes
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>
-            
+
             <Button
               variant="outline"
               size="lg"
@@ -106,9 +106,9 @@ const HeroSection = ({ onExploreNotes }: HeroSectionProps) => {
             className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 mt-16"
           >
             {[
-              { value: "4", label: "Labs Covered" },
-              { value: "25+", label: "Topics" },
-              { value: "50+", label: "Code Examples" },
+              { value: "3", label: "Subjects" },
+              { value: "30+", label: "Topics" },
+              { value: "75+", label: "Examples" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold gradient-text">
