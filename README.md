@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-Application runs at: http://localhost:5173  
+Application runs at:http://localhost:8080/
 Where Notes Live src/data/
 
 
