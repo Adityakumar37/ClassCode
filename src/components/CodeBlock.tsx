@@ -23,7 +23,7 @@ const CodeBlock = ({ code, output }: CodeBlockProps) => {
     const comments = /(\/\/.*$|\/\*[\s\S]*?\*\/)/gm;
     const numbers = /\b(\d+)\b/g;
 
-    let highlighted = code
+    const highlighted = code
       .replace(comments, '<span class="text-code-comment italic">$1</span>')
       .replace(strings, '<span class="text-code-string">$&</span>')
       .replace(keywords, '<span class="text-code-keyword">$1</span>')

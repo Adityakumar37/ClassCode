@@ -283,7 +283,125 @@ export const javascriptNotes: NoteSection[] = [
         keyPoints: [
           "clearInterval → stops repetition"
         ]
-      }
+      },
+      {
+  id: "timers-quiz",
+  title: "Timers Output Quiz",
+  content: [
+    "Test your understanding of Event Loop and Timers.",
+    "Remember: Main thread executes first, timers go to callback queue."
+  ],
+  codeExamples: [
+    {
+      code:
+            `console.log("A");
+                
+            setTimeout(() => {
+              console.log("B");
+            }, 1000);
+                
+            console.log("C");`,
+                  output: "A\nC\nB"
+                },
+                {
+                  code:
+            `setTimeout(() => {
+              console.log("Hello");
+            });
+                
+            console.log("World");`,
+                  output: "World\nHello"
+                },
+                {
+                  code:
+            `console.log("Start");
+                
+            setTimeout(() => {
+              console.log("Timeout");
+            }, 0);
+                
+            console.log("End");
+            console.log("Done");`,
+                  output: "Start\nEnd\nDone\nTimeout"
+                },
+                {
+                  code:
+            `setTimeout(() => {
+              console.log("First");
+            }, 2000);
+                
+            setTimeout(() => {
+              console.log("Second");
+            }, 1000);`,
+                  output: "Second\nFirst"
+                },
+                {
+                  code:
+            `console.log("1");
+                
+            setTimeout(() => {
+              console.log("2");
+            });
+                
+            setTimeout(() => {
+              console.log("3");
+            }, 0);
+                
+            console.log("4");`,
+                  output: "1\n4\n2\n3"
+                },
+                {
+                  code:
+            `console.log("Start");
+                
+            setInterval(() => {
+              console.log("Interval");
+            }, 1000);
+                
+            console.log("End");`,
+                  output: "Start\nEnd\nInterval\nInterval\n..."
+                },
+                {
+                  code:
+            `let id = setInterval(() => {
+              console.log("Hello");
+              clearInterval(id);
+            }, 1000);`,
+                  output: "Hello"
+                },
+                {
+                  code:
+            `let count = 0;
+                
+            let id = setInterval(() => {
+              count++;
+              console.log(count);
+                
+              if (count === 3) {
+                clearInterval(id);
+              }
+            }, 1000);`,
+                  output: "1\n2\n3"
+                },
+                {
+                  code:
+            `setInterval(() => {
+              console.log("Hi");
+            }, 0);
+                
+            console.log("Bye");`,
+                  output: "Bye\nHi\nHi\nHi\n..."
+                }
+              ],
+              keyPoints: [
+                "Even setTimeout(..., 0) runs AFTER main code.",
+                "Timers go to callback queue.",
+                "Event loop pushes callbacks to call stack when empty.",
+                "setInterval repeats until cleared."
+              ],
+              memoryRule: "Main code first → Then callback queue → Then timers."
+}
+
     ]
   },
   {
