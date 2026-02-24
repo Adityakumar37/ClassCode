@@ -229,10 +229,10 @@ export const javascriptNotes: NoteSection[] = [
   },
   {
     id: "section-11",
-    title: "11. Objects & DOM Basics",
+    title: "11. Objects & (DOM) Basics",
     topics: [
       {
-        id: "dom-basics",
+        id: "dom - basics",
         title: "Objects & DOM Basics",
         content: [
           "Basic DOM manipulation methods."
