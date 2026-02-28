@@ -17,6 +17,7 @@ Instead of scattered PDFs and messy notebooks, the platform presents topics like
 - Key takeaways for revision  
 - Interview insight highlights  
 - Responsive, distraction-free reading  
+- 
 
 
 
@@ -60,3 +61,4 @@ The purpose of this project is to create high-quality learning material, not las
 Every addition should make concepts easier for someone new to programming.
 
 
+Note - if anyone who want to practise about git and the workflow of git, feel free to open a pr and practise 
