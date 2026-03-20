@@ -27,7 +27,8 @@ Currently supported:
 
 - HTML  
 - CSS  
-- JavaScript  
+- JavaScript 
+- React from basic 
 
 The system is built to expand easily as new material becomes available.
 
